@@ -80,20 +80,16 @@ module.exports = (app) => {
         url: character.homeworld
       };
 
-      BRequest(planetOptions).then(response => {
+      return BRequest(planetOptions)
+
+    })
+      .then(response => {
         let planet = JSON.parse(response.body);
         res.status(200).json(planet);
       })
-        .catch(err => {
-          res.status(500).json(err);
-        });
-
-    })
-      .catch((err) => {
+      .catch(err => {
         res.status(500).json(err);
       });
-
-
   });
 
 
