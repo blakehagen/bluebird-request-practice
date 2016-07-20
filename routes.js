@@ -19,7 +19,7 @@ module.exports = (app) => {
 
     BRequest(options).then(response => {
       console.log('response ::::::::::: ==> ', response.body);
-      res.send(response.body);
+      res.json(JSON.parse(response.body));
     })
       .catch((err) => {
         res.status(500).json(err);
