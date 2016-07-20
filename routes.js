@@ -7,8 +7,9 @@ const BRequest = Promise.promisify(request);
 
 module.exports = (app) => {
 
-
+  //===========//
   // EXAMPLE 1 //
+  //===========//
   app.get('/test1/', (req, res) => {
 
     let options = {
@@ -25,7 +26,9 @@ module.exports = (app) => {
       });
   });
 
+  //===========//
   // EXAMPLE 2 //
+  //===========//
   app.get('/test2/', (req, res) => {
 
     const BASE_OPTIONS = {
@@ -57,12 +60,41 @@ module.exports = (app) => {
 
   });
 
+  //===========//
+  // EXAMPLE 3 //
+  //===========//
+  app.get('/test3/', (req, res) => {
+
+    let options = {
+      method: 'GET',
+      uri: 'http://swapi.co/api/people/1'
+    };
+
+    BRequest(options).then(response => {
+
+      let character = JSON.parse(response.body);
+      console.log('homeworld ::::: ==> ', character.homeworld);
+
+      let planetOptions = {
+        method: 'GET',
+        url: character.homeworld
+      };
+
+      BRequest(planetOptions).then(response => {
+        let planet = JSON.parse(response.body);
+        res.status(200).json(planet);
+      })
+        .catch(err => {
+          res.status(500).json(err);
+        });
+
+    })
+      .catch((err) => {
+        res.status(500).json(err);
+      });
 
 
-
-
-
-
+  });
 
 
 };
