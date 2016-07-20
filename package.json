@@ -1,0 +1,22 @@
+{
+  "name": "bluebird-request-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "lodash": "^4.13.1",
+    "request": "^2.73.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.7.0"
+  }
+}
